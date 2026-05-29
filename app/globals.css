@@ -22,6 +22,16 @@ body {
   letter-spacing: -0.01em;
 }
 
+.display-title {
+  font-family:
+    "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, ui-serif, serif;
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 0.9;
+  text-wrap: balance;
+  text-shadow: 0 1px 22px rgba(0, 0, 0, 0.18);
+}
+
 ::selection {
   background: rgba(255, 255, 255, 0.2);
 }
