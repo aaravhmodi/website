@@ -60,24 +60,29 @@ body {
 }
 
 .home-layout {
-  width: min(860px, calc(100% - 2.5rem));
+  width: min(900px, calc(100% - 2.5rem));
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(180px, 0.42fr);
-  column-gap: clamp(2rem, 6vw, 5rem);
+  grid-template-columns: minmax(0, 1fr) 220px;
+  column-gap: clamp(3rem, 7vw, 6rem);
   align-content: center;
+  row-gap: 2rem;
 }
 
 .home-layout h1 {
   grid-column: 1 / -1;
+  margin-top: 0;
 }
 
 .home-copy {
   max-width: 540px;
+  margin-top: 0;
 }
 
 .home-links {
   align-self: start;
-  margin-top: 2rem;
+  justify-self: start;
+  margin-top: 0;
+  padding-top: 0.2rem;
 }
 
 .place-content-next,
