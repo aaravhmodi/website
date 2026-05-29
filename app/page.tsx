@@ -74,6 +74,11 @@ const sections = [
         href: "https://github.com/aaravhmodi/crai",
       },
       {
+        title: "wrapped spotify",
+        text: "backend-heavy auth flow using the spotify api to track a session's wrapped",
+        href: "https://github.com/aaravhmodi/wrapped-spotify",
+      },
+      {
         title: "nasa design challenge",
         text: "grand prize winner out of 4,000+ global teams",
         href: "https://nss.org/wp-content/uploads/Cosmic-Flower-Revolutionizing-Agriculture-and-Health-in-Space.pdf",
