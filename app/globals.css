@@ -80,38 +80,30 @@ body {
   animation-delay: 210ms;
 }
 
-.action-row {
-  display: flex;
+.minimal-link {
+  display: inline-flex;
+  width: fit-content;
   align-items: center;
-  justify-content: space-between;
-  gap: 1.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.22);
-  padding: 0.9rem 1rem 0.9rem 1.15rem;
-  backdrop-filter: blur(10px);
+  color: rgb(228 228 231);
+  font-size: 1.08rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
   transition:
     transform 180ms ease,
-    border-color 180ms ease,
-    background 180ms ease;
+    color 180ms ease,
+    opacity 180ms ease;
 }
 
-.action-row:hover {
-  transform: translateX(0.35rem);
-  border-color: rgba(255, 255, 255, 0.42);
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.button-arrow {
-  display: grid;
-  width: 2.15rem;
-  height: 2.15rem;
-  flex: 0 0 auto;
-  place-items: center;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.14);
+.minimal-link:hover {
   color: white;
-  font-size: 1rem;
+  transform: translateX(0.25rem);
+}
+
+.minimal-icon {
+  display: inline-block;
+  min-width: 1.55rem;
+  color: rgb(161 161 170);
+  font-size: 0.95rem;
 }
 
 .arrow-button {
