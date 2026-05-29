@@ -73,9 +73,19 @@ body {
 .place-content-readable {
   border-radius: 1.5rem;
   padding: clamp(3rem, 8vh, 5rem) clamp(1.5rem, 4vw, 3.5rem);
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.28));
-  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(2px);
+  background: linear-gradient(100deg, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.58));
+  box-shadow: 0 2rem 7rem rgba(0, 0, 0, 0.48);
+  backdrop-filter: blur(5px);
+}
+
+.place-content-readable .section-label,
+.place-content-readable > p:first-child {
+  color: rgb(212 212 216);
+}
+
+.place-content-readable h1 {
+  color: white;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6);
 }
 
 .place-content-next {
@@ -93,15 +103,20 @@ body {
 }
 
 .place-content-readable .journey-row {
-  border-left-color: rgba(255, 255, 255, 0.28);
-  border-radius: 0.85rem;
+  border-left-color: rgba(255, 255, 255, 0.55);
+  border-radius: 1rem;
   margin-left: -0.75rem;
-  padding: 0.65rem 0.9rem 0.75rem 1.1rem;
-  background: rgba(0, 0, 0, 0.24);
+  padding: 0.85rem 1rem 0.95rem 1.1rem;
+  background: rgba(0, 0, 0, 0.46);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.place-content-readable .journey-row h2 {
+  color: white;
 }
 
 .place-content-readable .journey-row p {
-  color: rgb(212 212 216);
+  color: rgb(244 244 245);
 }
 
 .journey-row:nth-child(2) {
