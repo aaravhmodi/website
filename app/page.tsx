@@ -193,7 +193,9 @@ export default function Home() {
 
       <section
         key={active.id}
-        className={`place-content ${direction === "next" ? "place-content-next" : "place-content-prev"}`}
+        className={`place-content ${active.id === "home" ? "home-layout" : ""} ${
+          direction === "next" ? "place-content-next" : "place-content-prev"
+        }`}
       >
         <h1 className="mt-5 text-4xl font-medium tracking-[-0.035em] text-white sm:text-6xl">{active.title}</h1>
         {active.body ? (

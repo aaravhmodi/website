@@ -59,7 +59,7 @@ body {
   justify-content: center;
 }
 
-.place-content:has(.home-copy) {
+.home-layout {
   width: min(860px, calc(100% - 2.5rem));
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(180px, 0.42fr);
@@ -67,7 +67,7 @@ body {
   align-content: center;
 }
 
-.place-content:has(.home-copy) h1 {
+.home-layout h1 {
   grid-column: 1 / -1;
 }
 
@@ -192,7 +192,7 @@ body {
     padding: 5rem 1.1rem 6.5rem;
   }
 
-  .place-content:has(.home-copy) {
+  .home-layout {
     width: 100%;
     display: flex;
   }
