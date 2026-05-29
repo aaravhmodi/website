@@ -37,6 +37,135 @@ body {
   text-transform: lowercase;
 }
 
+.place-bg {
+  position: absolute;
+  inset: -2rem;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.12) translateX(2rem);
+  filter: saturate(0.85) contrast(1.04);
+  transition:
+    opacity 900ms ease,
+    transform 1200ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 900ms ease;
+}
+
+.place-bg-active {
+  opacity: 0.86;
+  transform: scale(1.02) translateX(0);
+  filter: saturate(0.98) contrast(1.05);
+  animation: place-breathe 9s ease-in-out infinite alternate;
+}
+
+.place-content {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  width: min(650px, 100%);
+  padding: clamp(5rem, 11vh, 8rem) 1.5rem;
+  margin-left: max(1.25rem, calc((100vw - 980px) / 2));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.place-content-next {
+  animation: arrive-next 720ms cubic-bezier(0.2, 0.85, 0.2, 1) both;
+}
+
+.place-content-prev {
+  animation: arrive-prev 720ms cubic-bezier(0.2, 0.85, 0.2, 1) both;
+}
+
+.journey-row {
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  padding-left: 1.1rem;
+  animation: row-pop 680ms ease both;
+}
+
+.journey-row:nth-child(2) {
+  animation-delay: 90ms;
+}
+
+.journey-row:nth-child(3) {
+  animation-delay: 180ms;
+}
+
+.arrow-button {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.32);
+  color: white;
+  font-size: 1.35rem;
+  line-height: 1;
+  backdrop-filter: blur(14px);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    opacity 180ms ease;
+}
+
+.arrow-button:hover:not(:disabled) {
+  transform: translateY(-2px) scale(1.04);
+  border-color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.arrow-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.28;
+}
+
+@keyframes arrive-next {
+  from {
+    opacity: 0;
+    transform: translateX(4rem) scale(0.98);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes arrive-prev {
+  from {
+    opacity: 0;
+    transform: translateX(-4rem) scale(0.98);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes row-pop {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes place-breathe {
+  from {
+    transform: scale(1.02) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.07) translate3d(-1.2rem, -0.6rem, 0);
+  }
+}
+
 .horizontal-scroll {
   scrollbar-width: none;
 }
