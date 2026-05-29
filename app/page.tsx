@@ -196,10 +196,14 @@ export default function Home() {
         className={`place-content ${direction === "next" ? "place-content-next" : "place-content-prev"}`}
       >
         <h1 className="mt-5 text-4xl font-medium tracking-[-0.035em] text-white sm:text-6xl">{active.title}</h1>
-        {active.body ? <p className="mt-6 max-w-[560px] text-lg leading-8 text-zinc-400">{active.body}</p> : null}
+        {active.body ? (
+          <p className={`mt-6 text-lg leading-8 text-zinc-400 ${active.id === "home" ? "home-copy" : "max-w-[560px]"}`}>
+            {active.body}
+          </p>
+        ) : null}
 
         {active.items.length ? (
-          <div className="mt-8 grid max-w-[560px] gap-3">
+          <div className={`mt-8 grid max-w-[560px] gap-3 ${active.id === "home" ? "home-links" : ""}`}>
             {active.items.map((item) => {
               const content = (
                 <>
