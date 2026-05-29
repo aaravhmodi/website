@@ -2,7 +2,23 @@
 
 import { useEffect, useMemo, useState } from "react";
 
-const sections = [
+type SectionItem = {
+  title: string;
+  text: string;
+  href?: string;
+  icon?: string;
+};
+
+type Section = {
+  id: string;
+  label: string;
+  title: string;
+  body: string;
+  image: string;
+  items: SectionItem[];
+};
+
+const sections: Section[] = [
   {
     id: "home",
     label: "home",
