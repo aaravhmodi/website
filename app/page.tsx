@@ -15,6 +15,21 @@ const sections = [
         text: "view pdf",
         href: "/AaravModiResume.pdf",
       },
+      {
+        title: "github",
+        text: "github.com/aaravhmodi",
+        href: "https://github.com/aaravhmodi",
+      },
+      {
+        title: "linkedin",
+        text: "linkedin.com/in/aaravhmodi",
+        href: "https://linkedin.com/in/aaravhmodi",
+      },
+      {
+        title: "email",
+        text: "aarav.modi@uwaterloo.ca",
+        href: "mailto:aarav.modi@uwaterloo.ca",
+      },
     ],
   },
   {
@@ -30,12 +45,12 @@ const sections = [
         href: "https://upsiderobotics.com/",
       },
       {
-        title: "software engineer",
+        title: "software engineer intern",
         text: "cibc - fall 2025",
         href: "https://www.cibc.com/",
       },
       {
-        title: "it project coordinator",
+        title: "it project coordinator intern",
         text: "cibc - winter 2025",
         href: "https://www.cibc.com/",
       },
@@ -71,21 +86,22 @@ const sections = [
     title: "daydream",
     body: "lead guitar, songwriting, recording. outside of code, probably writing songs or rehearsing.",
     image: "/IMG_8808.jpeg",
+    href: "https://open.spotify.com/artist/4ZlorZ6hE7ImbKwkpkvsaY?si=JMyJN66FQRWh3NiHTixnng",
     items: [
       {
-        title: "github",
-        text: "github.com/aaravhmodi",
-        href: "https://github.com/aaravhmodi",
+        title: "spotify",
+        text: "daydream artist page",
+        href: "https://open.spotify.com/artist/4ZlorZ6hE7ImbKwkpkvsaY?si=JMyJN66FQRWh3NiHTixnng",
       },
       {
-        title: "linkedin",
-        text: "linkedin.com/in/aaravhmodi",
-        href: "https://linkedin.com/in/aaravhmodi",
+        title: "youtube",
+        text: "youtube.com/@daydreamofl",
+        href: "https://www.youtube.com/@daydreamofl/",
       },
       {
-        title: "email",
-        text: "aarav.modi@uwaterloo.ca",
-        href: "mailto:aarav.modi@uwaterloo.ca",
+        title: "instagram",
+        text: "instagram.com/daydreamofl",
+        href: "https://www.instagram.com/daydreamofl/",
       },
     ],
   },
@@ -156,7 +172,19 @@ export default function Home() {
         key={active.id}
         className={`place-content ${direction === "next" ? "place-content-next" : "place-content-prev"}`}
       >
-        <h1 className="mt-5 text-4xl font-medium tracking-tight text-white sm:text-6xl">{active.title}</h1>
+        {active.href ? (
+          <a
+            href={active.href}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-5 block text-4xl font-medium tracking-tight text-white transition hover:text-zinc-300 sm:text-6xl"
+          >
+            {active.title}
+            <span className="ml-3 text-2xl text-zinc-500">{"\u2197"}</span>
+          </a>
+        ) : (
+          <h1 className="mt-5 text-4xl font-medium tracking-tight text-white sm:text-6xl">{active.title}</h1>
+        )}
         {active.body ? <p className="mt-6 max-w-[560px] text-lg leading-8 text-zinc-400">{active.body}</p> : null}
 
         {active.items.length ? (
