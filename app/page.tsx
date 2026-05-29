@@ -9,7 +9,13 @@ const sections = [
     title: "Aarav Modi",
     body: "systems design engineering at the university of waterloo. building software, data systems, ai/ml tools, fintech dashboards, products, and music.",
     image: "/DSC05135.JPG",
-    items: [],
+    items: [
+      {
+        title: "resume",
+        text: "view pdf",
+        href: "/AaravModiResume.pdf",
+      },
+    ],
   },
   {
     id: "experience",
@@ -19,13 +25,19 @@ const sections = [
     image: "/DSC05143.JPG",
     items: [
       {
-        title: "machine learning engineer",
-        text: "upside robotics - present",
+        title: "ai/ml engineering intern",
+        text: "upside robotics",
         href: "https://upsiderobotics.com/",
       },
       {
         title: "software engineer",
-        text: "cibc - 2025",
+        text: "cibc - fall 2025",
+        href: "https://www.cibc.com/",
+      },
+      {
+        title: "it project coordinator",
+        text: "cibc - winter 2025",
+        href: "https://www.cibc.com/",
       },
     ],
   },
@@ -34,7 +46,7 @@ const sections = [
     label: "projects",
     title: "projects",
     body: "",
-    image: "/DSC04770.JPG",
+    image: "/DSC04808.JPG",
     items: [
       {
         title: "lockerlink",
@@ -44,10 +56,12 @@ const sections = [
       {
         title: "crai",
         text: "ai cry analyzer presented at hackmit 2025",
+        href: "https://github.com/aaravhmodi/crai",
       },
       {
         title: "nasa design challenge",
         text: "grand prize winner out of 4,000+ global teams",
+        href: "https://nss.org/wp-content/uploads/Cosmic-Flower-Revolutionizing-Agriculture-and-Health-in-Space.pdf",
       },
     ],
   },
@@ -156,7 +170,7 @@ export default function Home() {
                 <>
                   <h2 className="text-xl font-medium text-zinc-100">
                     {item.title}
-                    {item.href ? <span className="ml-2 text-zinc-500">↗</span> : null}
+                    {item.href ? <span className="ml-2 text-zinc-500">{"\u2197"}</span> : null}
                   </h2>
                   <p className="mt-1 text-base text-zinc-500">{item.text}</p>
                 </>
