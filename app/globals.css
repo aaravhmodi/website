@@ -52,7 +52,7 @@ body {
 }
 
 .place-bg-active {
-  opacity: 0.86;
+  opacity: 1;
   transform: scale(1.02) translateX(0);
   filter: saturate(0.98) contrast(1.05);
   animation: place-breathe 9s ease-in-out infinite alternate;
@@ -124,12 +124,10 @@ body {
   from {
     opacity: 0;
     transform: translateX(4rem) scale(0.98);
-    filter: blur(10px);
   }
   to {
     opacity: 1;
     transform: translateX(0) scale(1);
-    filter: blur(0);
   }
 }
 
@@ -137,12 +135,10 @@ body {
   from {
     opacity: 0;
     transform: translateX(-4rem) scale(0.98);
-    filter: blur(10px);
   }
   to {
     opacity: 1;
     transform: translateX(0) scale(1);
-    filter: blur(0);
   }
 }
 

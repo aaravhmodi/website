@@ -105,8 +105,8 @@ export default function Home() {
           />
         ))}
       </div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_44%_28%,rgba(255,255,255,0.12),transparent_22%),linear-gradient(90deg,rgba(0,0,0,0.84),rgba(0,0,0,0.38)_50%,rgba(0,0,0,0.82))]" />
-      <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_44%_28%,rgba(255,255,255,0.10),transparent_22%),linear-gradient(90deg,rgba(0,0,0,0.62),rgba(0,0,0,0.18)_50%,rgba(0,0,0,0.58))]" />
+      <div className="absolute inset-0 bg-black/5" />
 
       <section
         key={active.id}
