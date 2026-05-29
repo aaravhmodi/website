@@ -150,14 +150,11 @@ export default function Home() {
         ))}
       </div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_44%_28%,rgba(255,255,255,0.10),transparent_22%),linear-gradient(90deg,rgba(0,0,0,0.62),rgba(0,0,0,0.18)_50%,rgba(0,0,0,0.58))]" />
-      {active.id === "projects" ? <div className="absolute inset-0 bg-black/38" /> : null}
       <div className="absolute inset-0 bg-black/5" />
 
       <section
         key={active.id}
-        className={`place-content ${active.id === "projects" ? "place-content-readable" : ""} ${
-          direction === "next" ? "place-content-next" : "place-content-prev"
-        }`}
+        className={`place-content ${direction === "next" ? "place-content-next" : "place-content-prev"}`}
       >
         <p className="text-sm font-medium text-zinc-500">{active.label}</p>
         <h1 className="mt-5 text-4xl font-medium tracking-tight text-white sm:text-6xl">{active.title}</h1>
