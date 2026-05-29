@@ -22,7 +22,7 @@ const sections: Section[] = [
   {
     id: "home",
     label: "home",
-    title: "Aarav Modi",
+    title: "aarav modi",
     body: "systems design engineering at the university of waterloo. building software, data systems, ai/ml tools, fintech dashboards, products, and music.",
     image: "/DSC05135.JPG",
     items: [
@@ -56,7 +56,7 @@ const sections: Section[] = [
     image: "/DSC05143.JPG",
     items: [
       {
-        title: "ai/ml engineering intern - upside robotics",
+        title: "ai/ml engineering intern - upside robotics - summer 2026",
         text: "",
         href: "https://upsiderobotics.com/",
       },
@@ -80,22 +80,22 @@ const sections: Section[] = [
     image: "/DSC04808.JPG",
     items: [
       {
-        title: "lockerlink",
+        title: "lockerlink (founder) - ova networking platform with 70+ users",
         text: "",
         href: "https://lockerlink.ca/",
       },
       {
-        title: "crai",
+        title: "crai (hackmit) - genetic baby crying classifier",
         text: "",
         href: "https://github.com/aaravhmodi/crai",
       },
       {
-        title: "wrapped spotify",
+        title: "wrapped spotify (spotify wrapped but for any time period)",
         text: "",
         href: "https://github.com/aaravhmodi/wrapped-spotify",
       },
       {
-        title: "nasa design challenge",
+        title: "nasa design challenge (grand prize winner)",
         text: "",
         href: "https://nss.org/wp-content/uploads/Cosmic-Flower-Revolutionizing-Agriculture-and-Health-in-Space.pdf",
       },
@@ -193,19 +193,13 @@ export default function Home() {
 
       <section
         key={active.id}
-        className={`place-content ${active.id === "home" ? "home-layout" : ""} ${
-          direction === "next" ? "place-content-next" : "place-content-prev"
-        }`}
+        className={`place-content ${direction === "next" ? "place-content-next" : "place-content-prev"}`}
       >
-        <h1 className="display-title mt-5 text-4xl text-white sm:text-6xl">{active.title}</h1>
-        {active.body ? (
-          <p className={`mt-6 text-lg leading-8 text-zinc-400 ${active.id === "home" ? "home-copy" : "max-w-[560px]"}`}>
-            {active.body}
-          </p>
-        ) : null}
+        <h1 className="mt-5 text-4xl font-medium tracking-[-0.035em] text-white sm:text-6xl">{active.title}</h1>
+        {active.body ? <p className="mt-6 max-w-[560px] text-lg leading-8 text-zinc-400">{active.body}</p> : null}
 
         {active.items.length ? (
-          <div className={`mt-8 grid max-w-[560px] gap-3 ${active.id === "home" ? "home-links" : ""}`}>
+          <div className="mt-8 grid max-w-[560px] gap-3">
             {active.items.map((item) => {
               const content = (
                 <>
