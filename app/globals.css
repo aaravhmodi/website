@@ -97,13 +97,21 @@ body {
 
 .home-links-sidebar {
   position: absolute;
-  right: max(1.25rem, calc((100vw - 980px) / 2));
+  left: calc(max(1.25rem, (100vw - 980px) / 2) + min(560px, 90vw) + 3rem);
   top: 50%;
   transform: translateY(-50%);
   z-index: 20;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+}
+
+@media (max-width: 800px) {
+  .home-links-sidebar {
+    position: static;
+    transform: none;
+    margin-top: 2rem;
+  }
 }
 
 .place-content-next,
