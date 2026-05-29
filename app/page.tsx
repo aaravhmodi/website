@@ -91,7 +91,6 @@ const sections = [
     title: "daydream",
     body: "lead guitar, songwriting, recording. outside of code, probably writing songs or rehearsing.",
     image: "/IMG_8808.jpeg",
-    href: "https://open.spotify.com/artist/4ZlorZ6hE7ImbKwkpkvsaY?si=JMyJN66FQRWh3NiHTixnng",
     items: [
       {
         title: "spotify",
@@ -177,31 +176,19 @@ export default function Home() {
         key={active.id}
         className={`place-content ${direction === "next" ? "place-content-next" : "place-content-prev"}`}
       >
-        {active.href ? (
-          <a
-            href={active.href}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-5 block text-4xl font-medium tracking-tight text-white transition hover:text-zinc-300 sm:text-6xl"
-          >
-            {active.title}
-            <span className="ml-3 text-2xl text-zinc-500">{"\u2197"}</span>
-          </a>
-        ) : (
-          <h1 className="mt-5 text-4xl font-medium tracking-tight text-white sm:text-6xl">{active.title}</h1>
-        )}
+        <h1 className="mt-5 text-4xl font-medium tracking-[-0.035em] text-white sm:text-6xl">{active.title}</h1>
         {active.body ? <p className="mt-6 max-w-[560px] text-lg leading-8 text-zinc-400">{active.body}</p> : null}
 
         {active.items.length ? (
-          <div className="mt-8 space-y-5">
+          <div className="mt-8 grid max-w-[560px] gap-3">
             {active.items.map((item) => {
               const content = (
                 <>
-                  <h2 className="text-xl font-medium text-zinc-100">
-                    {item.title}
-                    {item.href ? <span className="ml-2 text-zinc-500">{"\u2197"}</span> : null}
-                  </h2>
-                  <p className="mt-1 text-base text-zinc-500">{item.text}</p>
+                  <span>
+                    <span className="block text-base font-medium tracking-[-0.015em] text-zinc-100">{item.title}</span>
+                    <span className="mt-1 block text-sm leading-5 text-zinc-500">{item.text}</span>
+                  </span>
+                  {item.href ? <span className="button-arrow">{"\u2192"}</span> : null}
                 </>
               );
 
@@ -211,7 +198,7 @@ export default function Home() {
                   href={item.href}
                   target={item.href.startsWith("mailto:") ? undefined : "_blank"}
                   rel={item.href.startsWith("mailto:") ? undefined : "noreferrer"}
-                  className="journey-row block"
+                  className="journey-row action-row"
                 >
                   {content}
                 </a>
