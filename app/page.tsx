@@ -196,12 +196,10 @@ export default function Home() {
         className={`place-content ${direction === "next" ? "place-content-next" : "place-content-prev"}`}
       >
         <h1 className="mt-5 text-4xl font-medium tracking-[-0.035em] text-white sm:text-6xl">{active.title}</h1>
+        {active.body ? <p className="mt-6 max-w-[560px] text-lg leading-8 text-zinc-400">{active.body}</p> : null}
 
-        <div className={active.id === "home" && active.body ? "mt-6 flex items-start gap-12" : ""}>
-          {active.body ? <p className={active.id === "home" ? "max-w-[300px] text-lg leading-8 text-zinc-400" : "mt-6 max-w-[560px] text-lg leading-8 text-zinc-400"}>{active.body}</p> : null}
-
-        {active.items.length ? (
-          <div className={active.id === "home" ? "grid gap-3 shrink-0" : "mt-8 grid max-w-[560px] gap-3"}>
+        {active.id !== "home" && active.items.length ? (
+          <div className="mt-8 grid max-w-[560px] gap-3">
             {active.items.map((item) => {
               const content = (
                 <>
@@ -231,8 +229,39 @@ export default function Home() {
             })}
           </div>
         ) : null}
-        </div>
       </section>
+
+      {active.id === "home" && active.items.length ? (
+        <div className="absolute right-8 top-1/2 z-20 flex -translate-y-1/2 flex-col gap-3">
+          {active.items.map((item) => {
+            const content = (
+              <>
+                <span>
+                  <span className="minimal-icon">{item.icon ?? ""}</span>
+                  <span>{item.title}</span>
+                </span>
+                {item.href ? <span className="ml-2 text-zinc-500">{"\u2192"}</span> : null}
+              </>
+            );
+
+            return item.href ? (
+              <a
+                key={item.title}
+                href={item.href}
+                target={item.href.startsWith("mailto:") ? undefined : "_blank"}
+                rel={item.href.startsWith("mailto:") ? undefined : "noreferrer"}
+                className="journey-row minimal-link"
+              >
+                {content}
+              </a>
+            ) : (
+              <div key={item.title} className="journey-row">
+                {content}
+              </div>
+            );
+          })}
+        </div>
+      ) : null}
 
       <nav className="absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 items-center gap-4">
         <button
