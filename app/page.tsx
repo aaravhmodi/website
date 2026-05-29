@@ -12,22 +12,22 @@ const sections = [
     items: [
       {
         title: "resume",
-        text: "view pdf",
+        text: "",
         href: "/AaravModiResume.pdf",
       },
       {
         title: "github",
-        text: "github.com/aaravhmodi",
+        text: "",
         href: "https://github.com/aaravhmodi",
       },
       {
         title: "linkedin",
-        text: "linkedin.com/in/aaravhmodi",
+        text: "",
         href: "https://linkedin.com/in/aaravhmodi",
       },
       {
         title: "email",
-        text: "aarav.modi@uwaterloo.ca",
+        text: "",
         href: "mailto:aarav.modi@uwaterloo.ca",
       },
     ],
@@ -40,18 +40,18 @@ const sections = [
     image: "/DSC05143.JPG",
     items: [
       {
-        title: "ai/ml engineering intern",
-        text: "upside robotics",
+        title: "ai/ml engineering intern - upside robotics",
+        text: "",
         href: "https://upsiderobotics.com/",
       },
       {
-        title: "software engineer intern",
-        text: "cibc - fall 2025",
+        title: "software engineer intern - cibc - fall 2025",
+        text: "",
         href: "https://www.cibc.com/",
       },
       {
-        title: "it project coordinator intern",
-        text: "cibc - winter 2025",
+        title: "it project coordinator intern - cibc - winter 2025",
+        text: "",
         href: "https://www.cibc.com/",
       },
     ],
@@ -65,22 +65,22 @@ const sections = [
     items: [
       {
         title: "lockerlink",
-        text: "social platform for ova volleyball athletes and coaches",
+        text: "",
         href: "https://lockerlink.ca/",
       },
       {
         title: "crai",
-        text: "ai cry analyzer presented at hackmit 2025",
+        text: "",
         href: "https://github.com/aaravhmodi/crai",
       },
       {
         title: "wrapped spotify",
-        text: "backend-heavy auth flow using the spotify api to track a session's wrapped",
+        text: "",
         href: "https://github.com/aaravhmodi/wrapped-spotify",
       },
       {
         title: "nasa design challenge",
-        text: "grand prize winner out of 4,000+ global teams",
+        text: "",
         href: "https://nss.org/wp-content/uploads/Cosmic-Flower-Revolutionizing-Agriculture-and-Health-in-Space.pdf",
       },
     ],
@@ -94,18 +94,21 @@ const sections = [
     items: [
       {
         title: "spotify",
-        text: "daydream artist page",
+        text: "",
         href: "https://open.spotify.com/artist/4ZlorZ6hE7ImbKwkpkvsaY?si=JMyJN66FQRWh3NiHTixnng",
+        icon: "♬",
       },
       {
         title: "youtube",
-        text: "youtube.com/@daydreamofl",
+        text: "",
         href: "https://www.youtube.com/@daydreamofl/",
+        icon: "▶",
       },
       {
         title: "instagram",
-        text: "instagram.com/daydreamofl",
+        text: "",
         href: "https://www.instagram.com/daydreamofl/",
+        icon: "◎",
       },
     ],
   },
@@ -185,10 +188,10 @@ export default function Home() {
               const content = (
                 <>
                   <span>
-                    <span className="block text-base font-medium tracking-[-0.015em] text-zinc-100">{item.title}</span>
-                    <span className="mt-1 block text-sm leading-5 text-zinc-500">{item.text}</span>
+                    <span className="minimal-icon">{item.icon ?? ""}</span>
+                    <span>{item.title}</span>
                   </span>
-                  {item.href ? <span className="button-arrow">{"\u2192"}</span> : null}
+                  {item.href ? <span className="ml-2 text-zinc-500">{"\u2192"}</span> : null}
                 </>
               );
 
@@ -198,7 +201,7 @@ export default function Home() {
                   href={item.href}
                   target={item.href.startsWith("mailto:") ? undefined : "_blank"}
                   rel={item.href.startsWith("mailto:") ? undefined : "noreferrer"}
-                  className="journey-row action-row"
+                  className="journey-row minimal-link"
                 >
                   {content}
                 </a>
