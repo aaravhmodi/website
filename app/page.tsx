@@ -80,17 +80,17 @@ const sections: Section[] = [
     image: "/DSC04808.JPG",
     items: [
       {
-        title: "lockerlink (founder) - ova networking platform with 70+ users",
+        title: "lockerlink (founder)",
         text: "",
         href: "https://lockerlink.ca/",
       },
       {
-        title: "crai (hackmit) - genetic baby crying classifier",
+        title: "crai (hackmit)",
         text: "",
         href: "https://github.com/aaravhmodi/crai",
       },
       {
-        title: "wrapped spotify (spotify wrapped but for any time period)",
+        title: "wrapped spotify",
         text: "",
         href: "https://github.com/aaravhmodi/wrapped-spotify",
       },
