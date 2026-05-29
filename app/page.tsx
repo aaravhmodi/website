@@ -232,7 +232,7 @@ export default function Home() {
       </section>
 
       {active.id === "home" && active.items.length ? (
-        <div className="absolute right-8 top-1/2 z-20 flex -translate-y-1/2 flex-col gap-3">
+        <div className="home-links-sidebar">
           {active.items.map((item) => {
             const content = (
               <>
