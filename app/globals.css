@@ -29,6 +29,14 @@ body {
     sans-serif;
 }
 
+.section-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: rgb(113 113 122);
+  letter-spacing: 0;
+  text-transform: lowercase;
+}
+
 ::selection {
   background: rgba(56, 189, 248, 0.34);
 }
