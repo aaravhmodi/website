@@ -197,7 +197,7 @@ export default function Home() {
           direction === "next" ? "place-content-next" : "place-content-prev"
         }`}
       >
-        <h1 className="mt-5 text-4xl font-medium tracking-[-0.035em] text-white sm:text-6xl">{active.title}</h1>
+        <h1 className="display-title mt-5 text-4xl text-white sm:text-6xl">{active.title}</h1>
         {active.body ? (
           <p className={`mt-6 text-lg leading-8 text-zinc-400 ${active.id === "home" ? "home-copy" : "max-w-[560px]"}`}>
             {active.body}
