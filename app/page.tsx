@@ -18,8 +18,8 @@ const sections = [
     body: "",
     image: "/aurora-bg.png",
     items: [
-      ["machine learning engineer", "upside robotics · present"],
-      ["software engineer", "cibc · 2025"],
+      ["machine learning engineer", "upside robotics - present"],
+      ["software engineer", "cibc - 2025"],
     ],
   },
   {
@@ -70,6 +70,19 @@ export default function Home() {
     }),
     [canGoNext, canGoPrev],
   );
+
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    const hashIndex = sections.findIndex((section) => section.id === hash);
+
+    if (hashIndex >= 0) {
+      setActiveIndex(hashIndex);
+    }
+  }, []);
+
+  useEffect(() => {
+    window.history.replaceState(null, "", `#${active.id}`);
+  }, [active.id]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -123,7 +136,7 @@ export default function Home() {
           aria-label="Previous section"
           className="arrow-button"
         >
-          ←
+          &larr;
         </button>
         <div className="flex items-center gap-2">
           {sections.map((section, index) => (
@@ -148,7 +161,7 @@ export default function Home() {
           aria-label="Next section"
           className="arrow-button"
         >
-          →
+          &rarr;
         </button>
       </nav>
 
