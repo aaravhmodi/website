@@ -8,7 +8,7 @@ const sections = [
     label: "home",
     title: "Aarav Modi",
     body: "systems design engineering at the university of waterloo. building software, data systems, ai/ml tools, fintech dashboards, products, and music.",
-    image: "/lake-bg.png",
+    image: "/ocean.jpg",
     items: [],
   },
   {
@@ -16,7 +16,7 @@ const sections = [
     label: "experience",
     title: "experience",
     body: "",
-    image: "/aurora-bg.png",
+    image: "/hills.jpg",
     items: [
       ["machine learning engineer", "upside robotics - present"],
       ["software engineer", "cibc - 2025"],
@@ -27,7 +27,7 @@ const sections = [
     label: "projects",
     title: "projects",
     body: "",
-    image: "/cave-bg.png",
+    image: "/porto.jpg",
     items: [
       ["lockerlink", "social platform for ova volleyball athletes and coaches"],
       ["crai", "ai cry analyzer presented at hackmit 2025"],
