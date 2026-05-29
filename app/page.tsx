@@ -18,8 +18,15 @@ const sections = [
     body: "",
     image: "/DSC05143.JPG",
     items: [
-      ["machine learning engineer", "upside robotics - present"],
-      ["software engineer", "cibc - 2025"],
+      {
+        title: "machine learning engineer",
+        text: "upside robotics - present",
+        href: "https://upsiderobotics.com/",
+      },
+      {
+        title: "software engineer",
+        text: "cibc - 2025",
+      },
     ],
   },
   {
@@ -29,9 +36,19 @@ const sections = [
     body: "",
     image: "/DSC04770.JPG",
     items: [
-      ["lockerlink", "social platform for ova volleyball athletes and coaches"],
-      ["crai", "ai cry analyzer presented at hackmit 2025"],
-      ["nasa design challenge", "grand prize winner out of 4,000+ global teams"],
+      {
+        title: "lockerlink",
+        text: "social platform for ova volleyball athletes and coaches",
+        href: "https://lockerlink.ca/",
+      },
+      {
+        title: "crai",
+        text: "ai cry analyzer presented at hackmit 2025",
+      },
+      {
+        title: "nasa design challenge",
+        text: "grand prize winner out of 4,000+ global teams",
+      },
     ],
   },
   {
@@ -41,8 +58,21 @@ const sections = [
     body: "lead guitar, songwriting, recording. outside of code, probably writing songs or rehearsing.",
     image: "/IMG_8808.jpeg",
     items: [
-      ["github", "github.com/aaravhmodi"],
-      ["email", "aarav.modi@uwaterloo.ca"],
+      {
+        title: "github",
+        text: "github.com/aaravhmodi",
+        href: "https://github.com/aaravhmodi",
+      },
+      {
+        title: "linkedin",
+        text: "linkedin.com/in/aaravhmodi",
+        href: "https://linkedin.com/in/aaravhmodi",
+      },
+      {
+        title: "email",
+        text: "aarav.modi@uwaterloo.ca",
+        href: "mailto:aarav.modi@uwaterloo.ca",
+      },
     ],
   },
 ];
@@ -118,12 +148,33 @@ export default function Home() {
 
         {active.items.length ? (
           <div className="mt-8 space-y-5">
-            {active.items.map(([title, text]) => (
-              <div key={title} className="journey-row">
-                <h2 className="text-xl font-medium text-zinc-100">{title}</h2>
-                <p className="mt-1 text-base text-zinc-500">{text}</p>
-              </div>
-            ))}
+            {active.items.map((item) => {
+              const content = (
+                <>
+                  <h2 className="text-xl font-medium text-zinc-100">
+                    {item.title}
+                    {item.href ? <span className="ml-2 text-zinc-500">↗</span> : null}
+                  </h2>
+                  <p className="mt-1 text-base text-zinc-500">{item.text}</p>
+                </>
+              );
+
+              return item.href ? (
+                <a
+                  key={item.title}
+                  href={item.href}
+                  target={item.href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel={item.href.startsWith("mailto:") ? undefined : "noreferrer"}
+                  className="journey-row block"
+                >
+                  {content}
+                </a>
+              ) : (
+                <div key={item.title} className="journey-row">
+                  {content}
+                </div>
+              );
+            })}
           </div>
         ) : null}
       </section>
