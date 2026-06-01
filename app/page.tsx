@@ -61,7 +61,7 @@ const sections: Section[] = [
         href: "https://upsiderobotics.com/",
       },
       {
-        title: "software engineer intern - cibc - fall 2025",
+        title: "software engineering intern - cibc - fall 2025",
         text: "",
         href: "https://www.cibc.com/",
       },
