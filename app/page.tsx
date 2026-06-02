@@ -204,7 +204,7 @@ export default function Home() {
               const content = (
                 <>
                   <span>
-                    <span className="minimal-icon">{item.icon ?? ""}</span>
+                    {item.icon ? <span className="minimal-icon">{item.icon}</span> : null}
                     <span>{item.title}</span>
                   </span>
                   {item.href ? <span className="ml-2 text-zinc-500">{"\u2192"}</span> : null}
