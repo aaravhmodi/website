@@ -3,18 +3,20 @@
 import { useEffect, useRef } from "react";
 
 type Particle = {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  alpha: number;
+  ox: number; // origin x (0–1 normalized)
+  oy: number; // origin y (0–1 normalized)
   size: number;
-  hue: number;
+  baseAlpha: number;
+  twinkleSpeed: number;
+  twinkleOffset: number;
+  depth: number; // parallax layer 0–1 (deeper = less movement)
 };
+
+const COUNT = 180;
 
 export default function Sparkles() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const mouse = useRef({ x: -999, y: -999 });
+  const mouse = useRef({ x: 0.5, y: 0.5 }); // normalized 0–1
   const particles = useRef<Particle[]>([]);
   const frameRef = useRef<number>(0);
 
@@ -31,44 +33,46 @@ export default function Sparkles() {
     resize();
     window.addEventListener("resize", resize);
 
-    const onMove = (e: MouseEvent) => {
-      mouse.current = { x: e.clientX, y: e.clientY };
+    // seed fixed sparkles
+    particles.current = Array.from({ length: COUNT }, () => ({
+      ox: Math.random(),
+      oy: Math.random(),
+      size: Math.random() * 1.5 + 0.4,
+      baseAlpha: Math.random() * 0.5 + 0.2,
+      twinkleSpeed: Math.random() * 0.025 + 0.008,
+      twinkleOffset: Math.random() * Math.PI * 2,
+      depth: Math.random(),
+    }));
 
-      for (let i = 0; i < 3; i++) {
-        particles.current.push({
-          x: e.clientX + (Math.random() - 0.5) * 18,
-          y: e.clientY + (Math.random() - 0.5) * 18,
-          vx: (Math.random() - 0.5) * 0.8,
-          vy: -Math.random() * 1.4 - 0.4,
-          alpha: Math.random() * 0.6 + 0.4,
-          size: Math.random() * 2.2 + 0.8,
-          hue: Math.random() * 60 + 200, // blue-white range
-        });
-      }
+    const onMove = (e: MouseEvent) => {
+      mouse.current = {
+        x: e.clientX / window.innerWidth,
+        y: e.clientY / window.innerHeight,
+      };
     };
     window.addEventListener("mousemove", onMove);
 
+    let t = 0;
     const tick = () => {
+      t++;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      particles.current = particles.current.filter((p) => p.alpha > 0.01);
+      const mx = (mouse.current.x - 0.5) * 2; // -1 to 1
+      const my = (mouse.current.y - 0.5) * 2;
 
       for (const p of particles.current) {
-        p.x += p.vx;
-        p.y += p.vy;
-        p.vy += 0.018; // subtle gravity
-        p.alpha *= 0.957;
+        const parallax = (1 - p.depth) * 28; // near particles move more
+        const px = p.ox * canvas.width + mx * parallax;
+        const py = p.oy * canvas.height + my * parallax;
+
+        const twinkle = Math.sin(t * p.twinkleSpeed + p.twinkleOffset);
+        const alpha = p.baseAlpha * (0.55 + 0.45 * twinkle);
 
         ctx.save();
-        ctx.globalAlpha = p.alpha;
+        ctx.globalAlpha = Math.max(0, alpha);
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-
-        const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 2);
-        grad.addColorStop(0, `hsl(${p.hue}, 90%, 95%)`);
-        grad.addColorStop(1, `hsla(${p.hue}, 80%, 75%, 0)`);
-
-        ctx.fillStyle = grad;
+        ctx.arc(px, py, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = "white";
         ctx.fill();
         ctx.restore();
       }
@@ -84,10 +88,5 @@ export default function Sparkles() {
     };
   }, []);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      className="sparkle-canvas"
-    />
-  );
+  return <canvas ref={canvasRef} className="sparkle-canvas" />;
 }
