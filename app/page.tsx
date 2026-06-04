@@ -136,6 +136,7 @@ const sections: Section[] = [
 export default function Home() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState<"next" | "prev">("next");
+  const [vignette, setVignette] = useState(false);
   const active = sections[activeIndex];
 
   const canGoPrev = activeIndex > 0;
@@ -146,11 +147,15 @@ export default function Home() {
       next: () => {
         if (!canGoNext) return;
         setDirection("next");
+        setVignette(false);
+        requestAnimationFrame(() => setVignette(true));
         setActiveIndex((index) => Math.min(index + 1, sections.length - 1));
       },
       prev: () => {
         if (!canGoPrev) return;
         setDirection("prev");
+        setVignette(false);
+        requestAnimationFrame(() => setVignette(true));
         setActiveIndex((index) => Math.max(index - 1, 0));
       },
     }),
