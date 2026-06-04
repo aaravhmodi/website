@@ -221,7 +221,7 @@ export default function Home() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_44%_28%,rgba(255,255,255,0.10),transparent_22%),linear-gradient(90deg,rgba(0,0,0,0.62),rgba(0,0,0,0.18)_50%,rgba(0,0,0,0.58))]" />
       <div className="absolute inset-0 bg-black/5" />
       <Sparkles />
-      <div key={active.id} className="section-watermark">{active.label}</div>
+      <div key={`${active.id}-watermark`} className="section-watermark">{active.label}</div>
       {vignette && <div className="vignette-pulse" />}
 
       <section
