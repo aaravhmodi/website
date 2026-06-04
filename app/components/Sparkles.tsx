@@ -60,7 +60,13 @@ export default function Sparkles() {
     const onMove = (e: MouseEvent) => {
       mouse.current = { x: e.clientX, y: e.clientY };
     };
+    const onTouch = (e: TouchEvent) => {
+      const t = e.touches[0];
+      if (t) mouse.current = { x: t.clientX, y: t.clientY };
+    };
     window.addEventListener("mousemove", onMove);
+    window.addEventListener("touchmove", onTouch, { passive: true });
+    window.addEventListener("touchstart", onTouch, { passive: true });
 
     let t = 0;
     const tick = () => {
@@ -117,6 +123,8 @@ export default function Sparkles() {
     return () => {
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("touchmove", onTouch);
+      window.removeEventListener("touchstart", onTouch);
       cancelAnimationFrame(frameRef.current);
     };
   }, []);
