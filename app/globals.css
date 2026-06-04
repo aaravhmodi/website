@@ -36,6 +36,20 @@ body {
   background: rgba(255, 255, 255, 0.2);
 }
 
+.immersive-scene {
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+@media (max-width: 768px) {
+  .immersive-scene {
+    opacity: 0.35;
+  }
+}
+
 .place-bg {
   position: absolute;
   inset: -2rem;
