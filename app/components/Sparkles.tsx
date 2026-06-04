@@ -16,7 +16,7 @@ type Particle = {
   twinkleOffset: number;
 };
 
-const COUNT = 250;
+const COUNT = 400;
 const DISTURB_RADIUS = 100;
 const DISTURB_FORCE = 3.2;
 const FRICTION = 0.90;
