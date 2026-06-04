@@ -12,8 +12,8 @@ html {
 
 body {
   margin: 0;
-  min-height: 100vh;
-  overflow-x: hidden;
+  height: 100vh;
+  overflow: hidden;
   background: var(--background);
   color: var(--foreground);
   font-family:
@@ -67,13 +67,14 @@ body {
 .place-content {
   position: relative;
   z-index: 10;
-  min-height: 100vh;
+  height: 100vh;
   width: min(650px, 100%);
-  padding: clamp(5rem, 11vh, 8rem) 1.5rem clamp(5rem, 11vh, 8rem) 3rem;
+  padding: clamp(3rem, 8vh, 7rem) 1.5rem clamp(5rem, 10vh, 7rem) 3rem;
   margin-left: max(1.25rem, calc((100vw - 980px) / 2));
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow: hidden;
 }
 
 
@@ -187,7 +188,7 @@ body {
 @media (max-width: 640px) {
   .place-content {
     margin-left: 0;
-    padding: 5rem 1.1rem 6.5rem 2rem;
+    padding: 4rem 1.1rem 5.5rem 1.5rem;
   }
 }
 

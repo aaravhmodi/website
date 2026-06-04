@@ -181,7 +181,7 @@ export default function Home() {
   }, [move]);
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-black text-zinc-100">
+    <main className="relative h-screen overflow-hidden bg-black text-zinc-100">
       <div className="absolute inset-0">
         {sections.map((section, index) => (
           <div
