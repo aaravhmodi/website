@@ -5,27 +5,21 @@ import { useEffect, useRef } from "react";
 type Particle = {
   x: number;
   y: number;
-  ox: number; // float origin x
-  oy: number; // float origin y
-  vx: number; // velocity (used when disturbed)
+  vx: number;
   vy: number;
-  floatAmpX: number;
-  floatAmpY: number;
-  floatSpeedX: number;
-  floatSpeedY: number;
-  floatOffsetX: number;
-  floatOffsetY: number;
+  wanderAngle: number;
+  wanderSpeed: number; // how fast the direction turns
+  speed: number;       // base drift speed
   size: number;
   baseAlpha: number;
   twinkleSpeed: number;
   twinkleOffset: number;
-  disturbed: boolean;
 };
 
 const COUNT = 160;
-const DISTURB_RADIUS = 90;
-const DISTURB_FORCE = 2.8;
-const FRICTION = 0.88;
+const DISTURB_RADIUS = 100;
+const DISTURB_FORCE = 3.2;
+const FRICTION = 0.90;
 
 export default function Sparkles() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -47,29 +41,19 @@ export default function Sparkles() {
     window.addEventListener("resize", resize);
 
     const seed = () => {
-      particles.current = Array.from({ length: COUNT }, () => {
-        const x = Math.random() * canvas.width;
-        const y = Math.random() * canvas.height;
-        return {
-          x,
-          y,
-          ox: x,
-          oy: y,
-          vx: 0,
-          vy: 0,
-          floatAmpX: Math.random() * 18 + 6,
-          floatAmpY: Math.random() * 18 + 6,
-          floatSpeedX: Math.random() * 0.0008 + 0.0003,
-          floatSpeedY: Math.random() * 0.0008 + 0.0003,
-          floatOffsetX: Math.random() * Math.PI * 2,
-          floatOffsetY: Math.random() * Math.PI * 2,
-          size: Math.random() * 1.4 + 0.5,
-          baseAlpha: Math.random() * 0.22 + 0.08,
-          twinkleSpeed: Math.random() * 0.022 + 0.006,
-          twinkleOffset: Math.random() * Math.PI * 2,
-          disturbed: false,
-        };
-      });
+      particles.current = Array.from({ length: COUNT }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: 0,
+        vy: 0,
+        wanderAngle: Math.random() * Math.PI * 2,
+        wanderSpeed: Math.random() * 0.04 + 0.008,
+        speed: Math.random() * 0.35 + 0.08,
+        size: Math.random() * 1.4 + 0.5,
+        baseAlpha: Math.random() * 0.22 + 0.08,
+        twinkleSpeed: Math.random() * 0.022 + 0.006,
+        twinkleOffset: Math.random() * Math.PI * 2,
+      }));
     };
     seed();
 
@@ -84,35 +68,35 @@ export default function Sparkles() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       for (const p of particles.current) {
+        // slowly turn the wander direction
+        p.wanderAngle += (Math.random() - 0.5) * p.wanderSpeed;
+
+        // add wander drift to velocity
+        p.vx += Math.cos(p.wanderAngle) * p.speed * 0.06;
+        p.vy += Math.sin(p.wanderAngle) * p.speed * 0.06;
+
+        // mouse repulsion
         const dx = p.x - mouse.current.x;
         const dy = p.y - mouse.current.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-
-        if (dist < DISTURB_RADIUS) {
+        if (dist < DISTURB_RADIUS && dist > 0) {
           const force = (1 - dist / DISTURB_RADIUS) * DISTURB_FORCE;
           const angle = Math.atan2(dy, dx);
           p.vx += Math.cos(angle) * force;
           p.vy += Math.sin(angle) * force;
-          p.disturbed = true;
         }
 
-        if (p.disturbed) {
-          p.x += p.vx;
-          p.y += p.vy;
-          p.vx *= FRICTION;
-          p.vy *= FRICTION;
+        p.vx *= FRICTION;
+        p.vy *= FRICTION;
 
-          // drift origin back toward float target
-          const floatX = p.ox + Math.sin(t * p.floatSpeedX + p.floatOffsetX) * p.floatAmpX;
-          const floatY = p.oy + Math.sin(t * p.floatSpeedY + p.floatOffsetY) * p.floatAmpY;
-          p.x += (floatX - p.x) * 0.012;
-          p.y += (floatY - p.y) * 0.012;
+        p.x += p.vx;
+        p.y += p.vy;
 
-          if (Math.abs(p.vx) < 0.01 && Math.abs(p.vy) < 0.01) p.disturbed = false;
-        } else {
-          p.x = p.ox + Math.sin(t * p.floatSpeedX + p.floatOffsetX) * p.floatAmpX;
-          p.y = p.oy + Math.sin(t * p.floatSpeedY + p.floatOffsetY) * p.floatAmpY;
-        }
+        // wrap around edges
+        if (p.x < 0) p.x += canvas.width;
+        if (p.x > canvas.width) p.x -= canvas.width;
+        if (p.y < 0) p.y += canvas.height;
+        if (p.y > canvas.height) p.y -= canvas.height;
 
         const twinkle = Math.sin(t * p.twinkleSpeed + p.twinkleOffset);
         const alpha = p.baseAlpha * (0.5 + 0.5 * twinkle);
