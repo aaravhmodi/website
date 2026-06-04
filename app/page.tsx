@@ -1,6 +1,11 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import dynamic from "next/dynamic";
+
+const ImmersiveScene = dynamic(() => import("./components/ImmersiveScene"), {
+  ssr: false,
+});
 
 type SectionItem = {
   title: string;
@@ -190,6 +195,7 @@ export default function Home() {
       </div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_44%_28%,rgba(255,255,255,0.10),transparent_22%),linear-gradient(90deg,rgba(0,0,0,0.62),rgba(0,0,0,0.18)_50%,rgba(0,0,0,0.58))]" />
       <div className="absolute inset-0 bg-black/5" />
+      <ImmersiveScene activeSection={active.id} />
 
       <section
         key={active.id}
