@@ -136,7 +136,6 @@ const sections: Section[] = [
 export default function Home() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState<"next" | "prev">("next");
-  const [vignette, setVignette] = useState(false);
   const active = sections[activeIndex];
 
   const canGoPrev = activeIndex > 0;
@@ -147,15 +146,11 @@ export default function Home() {
       next: () => {
         if (!canGoNext) return;
         setDirection("next");
-        setVignette(false);
-        requestAnimationFrame(() => setVignette(true));
         setActiveIndex((index) => Math.min(index + 1, sections.length - 1));
       },
       prev: () => {
         if (!canGoPrev) return;
         setDirection("prev");
-        setVignette(false);
-        requestAnimationFrame(() => setVignette(true));
         setActiveIndex((index) => Math.max(index - 1, 0));
       },
     }),
@@ -184,28 +179,6 @@ export default function Home() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [move]);
 
-  useEffect(() => {
-    let startX = 0;
-    const onTouchStart = (e: TouchEvent) => { startX = e.touches[0].clientX; };
-    const onTouchEnd = (e: TouchEvent) => {
-      const dx = e.changedTouches[0].clientX - startX;
-      if (Math.abs(dx) < 40) return;
-      if (dx < 0) move.next();
-      else move.prev();
-    };
-    window.addEventListener("touchstart", onTouchStart, { passive: true });
-    window.addEventListener("touchend", onTouchEnd, { passive: true });
-    return () => {
-      window.removeEventListener("touchstart", onTouchStart);
-      window.removeEventListener("touchend", onTouchEnd);
-    };
-  }, [move]);
-
-  useEffect(() => {
-    if (!vignette) return;
-    const t = setTimeout(() => setVignette(false), 600);
-    return () => clearTimeout(t);
-  }, [vignette]);
 
   return (
     <main className="relative h-screen overflow-hidden bg-black text-zinc-100">
@@ -221,8 +194,6 @@ export default function Home() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_44%_28%,rgba(255,255,255,0.10),transparent_22%),linear-gradient(90deg,rgba(0,0,0,0.62),rgba(0,0,0,0.18)_50%,rgba(0,0,0,0.58))]" />
       <div className="absolute inset-0 bg-black/5" />
       <Sparkles />
-      <div key={`${active.id}-watermark`} className="section-watermark">{active.label}</div>
-      {vignette && <div className="vignette-pulse" />}
 
       <section
         key={active.id}
