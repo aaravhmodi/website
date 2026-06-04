@@ -179,6 +179,23 @@ export default function Home() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [move]);
 
+  useEffect(() => {
+    let startX = 0;
+    const onTouchStart = (e: TouchEvent) => { startX = e.touches[0].clientX; };
+    const onTouchEnd = (e: TouchEvent) => {
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) < 40) return;
+      if (dx < 0) move.next();
+      else move.prev();
+    };
+    window.addEventListener("touchstart", onTouchStart, { passive: true });
+    window.addEventListener("touchend", onTouchEnd, { passive: true });
+    return () => {
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchend", onTouchEnd);
+    };
+  }, [move]);
+
 
   return (
     <main className="relative h-screen overflow-hidden bg-black text-zinc-100">
