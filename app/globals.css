@@ -43,6 +43,45 @@ body {
   pointer-events: none;
 }
 
+.section-watermark {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 4vw;
+  font-size: clamp(5rem, 18vw, 16rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: white;
+  opacity: 0.03;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  animation: watermark-arrive 700ms cubic-bezier(0.2, 0.85, 0.2, 1) both;
+}
+
+.vignette-pulse {
+  position: fixed;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.72) 100%);
+  animation: vignette-flash 600ms ease-out forwards;
+}
+
+@keyframes watermark-arrive {
+  from { opacity: 0; transform: translateX(2rem); }
+  to   { opacity: 0.03; transform: translateX(0); }
+}
+
+@keyframes vignette-flash {
+  0%   { opacity: 0; }
+  25%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
 .place-bg {
   position: absolute;
   inset: -2rem;
