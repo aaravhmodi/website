@@ -27,7 +27,7 @@ const sections: Section[] = [
     label: "home",
     title: "aarav modi",
     body: "systems design engineering at the university of waterloo. building software, data systems, ai/ml tools, fintech dashboards, products, and music.",
-    image: "/DSC05135.JPG",
+    image: "/DSC05135.webp",
     items: [
       {
         title: "resume",
@@ -56,7 +56,7 @@ const sections: Section[] = [
     label: "experience",
     title: "experience",
     body: "",
-    image: "/DSC05143.JPG",
+    image: "/DSC05143.webp",
     items: [
       {
         title: "ai/ml engineering intern - upside robotics - summer 2026",
@@ -80,7 +80,7 @@ const sections: Section[] = [
     label: "projects",
     title: "projects",
     body: "",
-    image: "/DSC04808.JPG",
+    image: "/DSC04808.webp",
     items: [
       {
         title: "lockerlink (founder)",
@@ -109,7 +109,7 @@ const sections: Section[] = [
     label: "music / socials",
     title: "daydream",
     body: "lead guitar, songwriting, recording. outside of code, probably writing songs or rehearsing.",
-    image: "/IMG_8808.jpeg",
+    image: "/IMG_8808.webp",
     items: [
       {
         title: "spotify",
