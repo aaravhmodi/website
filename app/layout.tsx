@@ -15,6 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preload" as="image" href="/DSC05135.JPG" fetchPriority="high" />
+      </head>
       <body>{children}</body>
     </html>
   );

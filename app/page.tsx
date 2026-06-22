@@ -204,7 +204,7 @@ export default function Home() {
           <div
             key={section.id}
             className={`place-bg ${index === activeIndex ? "place-bg-active" : ""}`}
-            style={{ backgroundImage: `url('${section.image}')` }}
+            style={{ backgroundImage: Math.abs(index - activeIndex) <= 1 ? `url('${section.image}')` : undefined }}
           />
         ))}
       </div>
