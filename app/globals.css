@@ -127,6 +127,36 @@ body {
   font-size: 0.95rem;
 }
 
+.minimal-sub {
+  display: block;
+  margin-top: 0.2rem;
+  color: rgb(113 113 122);
+  font-size: 0.68rem;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
+
+.items-scroll {
+  max-height: min(50vh, 460px);
+  overflow-y: auto;
+  padding-right: 0.75rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+}
+
+.items-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.items-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+}
+
+.items-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 .arrow-button {
   width: 3rem;
   height: 3rem;
