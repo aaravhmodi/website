@@ -17,6 +17,7 @@ type Section = {
   label: string;
   title: string;
   body: string;
+  bodyClass?: string;
   image: string;
   items: SectionItem[];
 };
