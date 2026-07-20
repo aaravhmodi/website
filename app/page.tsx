@@ -279,15 +279,18 @@ export default function Home() {
         {active.body ? <p className="mt-6 max-w-[560px] text-lg leading-8 text-zinc-400">{active.body}</p> : null}
 
         {active.items.length ? (
-          <div className="mt-8 grid max-w-[560px] gap-3">
+          <div className="mt-8 grid max-w-[560px] gap-3 items-scroll">
             {active.items.map((item) => {
               const content = (
                 <>
-                  <span>
-                    {item.icon ? <span className="minimal-icon">{item.icon}</span> : null}
-                    <span>{item.title}</span>
+                  <span className="flex flex-col">
+                    <span>
+                      {item.icon ? <span className="minimal-icon">{item.icon}</span> : null}
+                      <span>{item.title}</span>
+                    </span>
+                    {item.text ? <span className="minimal-sub">{item.text}</span> : null}
                   </span>
-                  {item.href ? <span className="ml-2 text-zinc-500">{"\u2192"}</span> : null}
+                  {item.href ? <span className="ml-2 shrink-0 self-start text-zinc-500">{"\u2192"}</span> : null}
                 </>
               );
 
