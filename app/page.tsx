@@ -46,6 +46,11 @@ const sections: Section[] = [
         href: "https://linkedin.com/in/aaravhmodi",
       },
       {
+        title: "x",
+        text: "",
+        href: "https://x.com/aarav_mo",
+      },
+      {
         title: "email",
         text: "",
         href: "mailto:aarav.modi@uwaterloo.ca",
