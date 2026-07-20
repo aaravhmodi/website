@@ -139,7 +139,7 @@ const sections: Section[] = [
     label: "articles",
     title: "articles",
     body: "writing on medium — mostly ml systems research and build logs.",
-    image: "/DSC04770.webp",
+    image: "/DSC04988.webp",
     items: [
       {
         title: "answersurvivalrag: what happens when rag finds the answer, then drops it?",
