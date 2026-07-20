@@ -84,23 +84,82 @@ const sections: Section[] = [
     items: [
       {
         title: "lockerlink (founder)",
-        text: "",
+        text: "next.js · firebase — social app for ova volleyball players",
         href: "https://lockerlink.ca/",
       },
       {
+        title: "gitgrade",
+        text: "next.js · fastapi — scores github work by engineering signal, not commit volume",
+        href: "https://github.com/aaravhmodi/gitgrade",
+      },
+      {
         title: "crai (hackmit)",
-        text: "",
+        text: "acoustic ml — baby cry analysis for early detection of health conditions",
         href: "https://github.com/aaravhmodi/crai",
       },
       {
+        title: "nasa design challenge (grand prize winner)",
+        text: "national space society — cosmic flower, agriculture and health in space",
+        href: "https://nss.org/wp-content/uploads/Cosmic-Flower-Revolutionizing-Agriculture-and-Health-in-Space.pdf",
+      },
+      {
         title: "wrapped spotify",
-        text: "",
+        text: "next.js · spotify api — short-term listening wrapped, oauth from scratch",
         href: "https://github.com/aaravhmodi/wrapped-spotify",
       },
       {
-        title: "nasa design challenge (grand prize winner)",
-        text: "",
-        href: "https://nss.org/wp-content/uploads/Cosmic-Flower-Revolutionizing-Agriculture-and-Health-in-Space.pdf",
+        title: "answersurvivalrag",
+        text: "research — budget-constrained multi-hop rag packing across hotpotqa, squad, triviaqa",
+        href: "https://github.com/aaravhmodi/rag-packing",
+      },
+      {
+        title: "fastbpe",
+        text: "research — benchmarks bpe tokenizer backends for throughput, latency, memory",
+        href: "https://github.com/aaravhmodi/tokenizer-benchmarking",
+      },
+      {
+        title: "rag chunking benchmark",
+        text: "research — evaluates chunking strategies for rag retrieval quality",
+        href: "https://github.com/aaravhmodi/rag-chunking",
+      },
+      {
+        title: "ai paper-to-code",
+        text: "pytorch · langchain · chromadb — retrieves arxiv papers, generates code from them",
+        href: "https://github.com/aaravhmodi/ai-paper2code",
+      },
+      {
+        title: "osint canada threat actor profiler",
+        text: "python · spacy · misp — clusters iocs from open sources into actor profiles",
+        href: "https://github.com/aaravhmodi/aarav-canada-eye",
+      },
+    ],
+  },
+  {
+    id: "articles",
+    label: "articles",
+    title: "articles",
+    body: "writing on medium — mostly ml systems research and build logs.",
+    image: "/DSC04770.webp",
+    items: [
+      {
+        title: "answersurvivalrag: what happens when rag finds the answer, then drops it?",
+        text: "july 2026",
+        href: "https://medium.com/@aaravmodi20/answersurvivalrag-what-happens-when-rag-finds-the-answer-then-drops-it-43befdb4a46c",
+      },
+      {
+        title: "fastbpe: can we make tokenization faster without changing the tokens?",
+        text: "june 2026",
+        href: "https://medium.com/@aaravmodi20/fastbpe-can-we-make-tokenization-faster-without-changing-the-tokens-7e2d644b1152",
+      },
+      {
+        title: "building a short-term spotify wrapped taught me oauth the hard way",
+        text: "january 2026",
+        href: "https://medium.com/@aaravmodi20/building-a-short-term-spotify-wrapped-taught-me-oauth-the-hard-way-3cab646ddcdc",
+      },
+      {
+        title: "how an athlete's amygdala and limbic system react in high-pressure game situations",
+        text: "october 2022",
+        href: "https://medium.com/@aaravmodi20/how-an-athletes-amygdala-and-limbic-system-react-in-high-pressure-game-situations-17d8e868bc72",
       },
     ],
   },
