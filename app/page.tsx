@@ -144,7 +144,8 @@ const sections: Section[] = [
     id: "articles",
     label: "articles",
     title: "articles",
-    body: "writing on medium — mostly ml systems research and build logs.",
+    body: "writing on medium. mostly ml systems research and build logs.",
+    bodyClass: "text-zinc-700 [text-shadow:0_1px_3px_rgba(255,255,255,0.25)]",
     image: "/DSC04988.webp",
     items: [
       {
